@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  apache:
+    image: httpd:2.4
+    container_name: docker-compose-apache
+    ports:
+      - 80:80
+    volumes:
+      - ./public:/usr/local/apache2/htdocs
