@@ -1,4 +1,4 @@
-version: 0.0
+version: '3.1'
 
 #networks:
 #  amd_net:
@@ -6,25 +6,20 @@ version: 0.0
 #      config:
 #        - subnet: 192.168.51.0/24
 services:
-  # php + apache2
   amd-apache:
     build:
       dockerfile: Dockerfile
       context: ./images/apache
-    #    restart: always
-#    volumes:
-  #       Mounting the website inside of a subfolder named app
-  #            - /etc/passwd/:/etc/passwd:ro
-  #            - /etc/group/:/etc/group:ro
-#      - ./data/www/:/html
-#      - ./configs/apache/lp.conf:/etc/apache2/sites-enabled/000-default.conf
-#      - ./configs/apache/ce.conf:/etc/apache2/sites-enabled/ce.conf
-#      - ./configs/php/php.ini:/usr/local/etc/php/php.ini
-#      - ./configs/php/setdocroot.php:/html/setdocroot.php
-#    ports:
-#      - 80:80
-#    dns:
-#      - 192.168.51.5
-#    networks:
-#      amd_net:
-#        ipv4_address: 192.168.51.2
+    ports:
+      - "8080:80"
+    volumes:
+      - './data/public/:/var/www/html/'
+#      - './configs/:/etc/apache2/'
+  mysql:
+    build:
+      dockerfile: Dockerfile
+      context: ./images/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3306:3307'
