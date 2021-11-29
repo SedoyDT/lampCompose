@@ -13,8 +13,8 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - './data/public/:/var/www/html/'
-#      - './configs/:/etc/apache2/'
+      - './app/public/:/var/www/html/'
+#      - './configs/apache/:/etc/apache2/'
   mysql:
     build:
       dockerfile: Dockerfile
