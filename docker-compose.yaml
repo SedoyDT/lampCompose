@@ -9,15 +9,12 @@ services:
   amd-apache:
     build:
       dockerfile: Dockerfile
-      context: ./images/apache
-#    extra_hosts:
-#      - "lara.local:127.0.0.1"
-#    hostname: lara.local
+      context: ./images/apache/
     ports:
       - "8080:80"
     volumes:
       - './app/public/:/var/www/html/'
-#      - './configs/apache/:/etc/apache2/'
+      - './configs/apache/se.conf:/etc/apache2/sites-available/000-default.conf'
   mysql:
     build:
       dockerfile: Dockerfile
