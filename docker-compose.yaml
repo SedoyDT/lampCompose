@@ -10,6 +10,9 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./images/apache
+#    extra_hosts:
+#      - "lara.local:127.0.0.1"
+#    hostname: lara.local
     ports:
       - "8080:80"
     volumes:
