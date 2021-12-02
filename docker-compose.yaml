@@ -13,8 +13,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - './app/public/:/var/www/html/'
-      - './configs/apache/se.conf:/etc/apache2/sites-enabled/000-default.conf'
+      - './app/:/var/www/html/'
+      - './configs/apache/cfg.conf:/etc/apache2/sites-enabled/000-default.conf'
   mysql:
     build:
       dockerfile: Dockerfile
